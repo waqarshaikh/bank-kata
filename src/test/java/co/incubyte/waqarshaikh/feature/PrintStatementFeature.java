@@ -3,6 +3,7 @@ package co.incubyte.waqarshaikh.feature;
 import static org.mockito.Mockito.inOrder;
 
 import co.incubyte.waqarshaikh.Account;
+import co.incubyte.waqarshaikh.Clock;
 import co.incubyte.waqarshaikh.Console;
 import co.incubyte.waqarshaikh.StatementPrinter;
 import co.incubyte.waqarshaikh.TransactionRepository;
@@ -19,11 +20,13 @@ public class PrintStatementFeature {
 
   @Mock
   Console console;
+  @Mock
+  private Clock clock;
   private Account account;
 
   @BeforeEach
   public void setUp() {
-    TransactionRepository transactionRepo = new TransactionRepository();
+    TransactionRepository transactionRepo = new TransactionRepository(clock);
     StatementPrinter statementPrinter = new StatementPrinter();
     account = new Account(transactionRepo, statementPrinter);
   }

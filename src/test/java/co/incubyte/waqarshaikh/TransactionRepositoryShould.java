@@ -21,7 +21,7 @@ class TransactionRepositoryShould {
   @BeforeEach
   public void setUp() {
     given(clock.todayAsString()).willReturn(TODAY);
-    transactionRepo = new TransactionRepository();
+    transactionRepo = new TransactionRepository(clock);
   }
 
   @Test
