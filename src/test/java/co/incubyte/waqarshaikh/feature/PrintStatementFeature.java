@@ -40,10 +40,6 @@ public class PrintStatementFeature {
     account.withdraw(100);
     account.deposit(500);
 
-    account.deposit(1000);
-    account.withdraw(100);
-    account.deposit(500);
-
     account.printStatement();
 
     InOrder inOrder = inOrder(console);
