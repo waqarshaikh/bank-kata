@@ -15,12 +15,12 @@ public class TransactionRepository {
   }
 
   public void addDeposit(int amount) {
-    final Transaction deposit = new Transaction(clock.todayAsString(), amount);
+    Transaction deposit = new Transaction(clock.todayAsString(), amount);
     transactions.add(deposit);
   }
 
   public void addWithdrawal(int amount) {
-    final Transaction withdrawal = new Transaction(clock.todayAsString(), -amount);
+    Transaction withdrawal = new Transaction(clock.todayAsString(), -amount);
     transactions.add(withdrawal);
   }
 
