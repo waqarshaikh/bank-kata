@@ -43,7 +43,7 @@ class AccountShould {
 
   @Test
   public void print_a_statement() {
-    List<Transaction> transactions = asList(new Transaction());
+    List<Transaction> transactions = asList(new Transaction("31/10/2021", 100));
 
     given(transactionRepo.allTransactions()).willReturn(transactions);
 
