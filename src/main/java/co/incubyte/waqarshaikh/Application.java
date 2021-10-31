@@ -1,10 +1,18 @@
 package co.incubyte.waqarshaikh;
 
-import io.micronaut.runtime.Micronaut;
-
 public class Application {
 
     public static void main(String[] args) {
-        Micronaut.run(Application.class, args);
+        Clock clock = new Clock();
+        TransactionRepository transactionRepo = new TransactionRepository(clock);
+        Console console = new Console();
+        StatementPrinter statementPrinter = new StatementPrinter(console);
+        Account account = new Account(transactionRepo, statementPrinter);
+
+        account.deposit(1000);
+        account.withdraw(400);
+        account.deposit(1000);
+
+        account.printStatement();
     }
 }
