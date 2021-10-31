@@ -2,6 +2,12 @@ package co.incubyte.waqarshaikh;
 
 public class Account {
 
+  private TransactionRepository transactionRepo;
+
+  public Account(TransactionRepository transactionRepo) {
+    this.transactionRepo = transactionRepo;
+  }
+
   public void deposit(int amount) {
     throw new UnsupportedOperationException();
   }
