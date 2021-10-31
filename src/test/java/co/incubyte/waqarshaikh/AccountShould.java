@@ -5,6 +5,8 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
 
 import co.incubyte.waqarshaikh.Account;
+import co.incubyte.waqarshaikh.StatementPrinter;
+import co.incubyte.waqarshaikh.Transaction;
 import co.incubyte.waqarshaikh.TransactionRepository;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,10 +21,12 @@ class AccountShould {
   private Account account;
   @Mock
   private TransactionRepository transactionRepo;
+  @Mock
+  private StatementPrinter statementPrinter;
 
   @BeforeEach
   void setup() {
-    account = new Account(transactionRepo);
+    account = new Account(transactionRepo, statementPrinter);
   }
 
   @Test
@@ -35,5 +39,15 @@ class AccountShould {
   public void store_a_withdraw_transaction() {
     account.withdraw(500);
     verify(transactionRepo).addWithdrawal(500);
+  }
+
+  @Test
+  public void print_a_statement() {
+    List<Transaction> transactions = asList(new Transaction());
+
+    given(transactionRepo.allTransactions()).willReturn(transactions);
+
+    account.printStatement();
+    verify(statementPrinter).print(transactions);
   }
 }

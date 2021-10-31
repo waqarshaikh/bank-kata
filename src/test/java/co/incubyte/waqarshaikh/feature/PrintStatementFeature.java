@@ -4,6 +4,7 @@ import static org.mockito.Mockito.inOrder;
 
 import co.incubyte.waqarshaikh.Account;
 import co.incubyte.waqarshaikh.Console;
+import co.incubyte.waqarshaikh.StatementPrinter;
 import co.incubyte.waqarshaikh.TransactionRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,7 +24,8 @@ public class PrintStatementFeature {
   @BeforeEach
   public void setUp() {
     TransactionRepository transactionRepo = new TransactionRepository();
-    account = new Account(transactionRepo);
+    StatementPrinter statementPrinter = new StatementPrinter();
+    account = new Account(transactionRepo, statementPrinter);
   }
 
   @Test

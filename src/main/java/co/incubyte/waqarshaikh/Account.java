@@ -3,9 +3,12 @@ package co.incubyte.waqarshaikh;
 public class Account {
 
   private TransactionRepository transactionRepo;
+  private StatementPrinter statementPrinter;
 
-  public Account(TransactionRepository transactionRepo) {
+  public Account(TransactionRepository transactionRepo,
+      StatementPrinter statementPrinter) {
     this.transactionRepo = transactionRepo;
+    this.statementPrinter = statementPrinter;
   }
 
   public void deposit(int amount) {
@@ -17,6 +20,6 @@ public class Account {
   }
 
   public void printStatement() {
-    throw new UnsupportedOperationException();
+    this.statementPrinter.print(this.transactionRepo.allTransactions());
   }
 }
