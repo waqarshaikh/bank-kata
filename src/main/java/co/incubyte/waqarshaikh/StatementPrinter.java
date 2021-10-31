@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class StatementPrinter {
 
+  public static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
   private DecimalFormat decimalFormater = new DecimalFormat("#.00");
   private Console console;
 
@@ -17,7 +18,7 @@ public class StatementPrinter {
   }
 
   public void print(List<Transaction> transactions) {
-    console.printLine("DATE | AMOUNT | BALANCE");
+    console.printLine(STATEMENT_HEADER);
 
     printStatementLines(transactions);
   }

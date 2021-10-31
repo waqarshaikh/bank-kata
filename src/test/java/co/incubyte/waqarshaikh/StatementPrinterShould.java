@@ -17,6 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class StatementPrinterShould {
 
   private static final List<Transaction> NO_TRANSACTIONS = emptyList();
+  public static final String STATEMENT_HEADER = "DATE | AMOUNT | BALANCE";
   @Mock
   private Console console;
   private StatementPrinter statementPrinter;
@@ -29,7 +30,7 @@ class StatementPrinterShould {
   @Test
   public void always_print_header() {
     statementPrinter.print(NO_TRANSACTIONS);
-    verify(console).printLine("DATE | AMOUNT | BALANCE");
+    verify(console).printLine(STATEMENT_HEADER);
   }
 
   @Test
