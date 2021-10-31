@@ -27,7 +27,7 @@ public class PrintStatementFeature {
   @BeforeEach
   public void setUp() {
     TransactionRepository transactionRepo = new TransactionRepository(clock);
-    StatementPrinter statementPrinter = new StatementPrinter();
+    StatementPrinter statementPrinter = new StatementPrinter(console);
     account = new Account(transactionRepo, statementPrinter);
   }
 
